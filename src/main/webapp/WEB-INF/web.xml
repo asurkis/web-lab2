@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="4.0">
+    <servlet>
+        <servlet-name>Controller Servlet</servlet-name>
+        <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.ControllerServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Area Check Servlet</servlet-name>
+        <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.AreaCheckServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>No Input Servlet</servlet-name>
+        <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.NoInputServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Controller Servlet</servlet-name>
+        <url-pattern>/controller</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Area Check Servlet</servlet-name>
+        <url-pattern>/area-check</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>No Input Servlet</servlet-name>
+        <url-pattern>/no-input</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+<!--        <!DOCTYPE web-app PUBLIC-->
+<!-- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"-->
+<!-- "http://java.sun.com/dtd/web-app_2_3.dtd" >-->
+<!--<web-app>-->
+<!--    <parameter-encoding default-charset="UTF-8" />-->
+<!--&lt;!&ndash;  <display-name>Archetype Created Web Application</display-name>&ndash;&gt;-->
+<!--</web-app>-->

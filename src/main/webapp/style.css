@@ -1,0 +1,59 @@
+<%@ page pageEncoding="UTF-8" %>
+svg {
+    float: right;
+}
+
+body {
+    background-color: #eee;
+    color: #333;
+    font-family: sans-serif;
+}
+
+#header-box {
+    color: #eba300;
+}
+
+#header-box + * {
+    height: 1em;
+}
+
+#results-table tbody tr td {
+    text-align: right;
+}
+
+line {
+    stroke: black;
+}
+
+polygon {
+    fill: black;
+}
+
+circle {
+    fill: black;
+}
+
+#r1-path {
+    fill: #cdf;
+}
+
+#r2-path {
+    fill: #cff;
+}
+
+#r3-path {
+    fill: #ccf;
+}
+
+#r4-path {
+    fill: #6ff;
+}
+
+#r5-path {
+    fill: #6cf;
+}
+
+.invalid-input {
+    color: #f00;
+    visibility: hidden;
+}
