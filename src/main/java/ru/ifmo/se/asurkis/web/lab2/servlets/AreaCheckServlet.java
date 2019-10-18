@@ -15,20 +15,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class AreaCheckServlet extends HttpServlet {
-    private boolean checkPoint(double x, double y, double r) {
-        if (x > 0) {
-            if (y >= 0) {
-                return x * x + y * y <= r * r;
-            } else {
-                return 2 * x - y <= r;
-            }
-        } else if (x < 0) {
-            return -r <= x && -r <= y && y <= 0;
-        } else {
-            return -r <= y && y <= r;
-        }
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Object parametersObj = request.getAttribute("parameters");
@@ -51,7 +37,7 @@ public class AreaCheckServlet extends HttpServlet {
         for (double x: xs) {
             for (double y: ys) {
                 for (double r: rs) {
-                    results.add(new Result(x, y, r, checkPoint(x, y, r)));
+                    results.add(new Result(x, y, r));
                 }
             }
         }

@@ -8,11 +8,11 @@ public class Result implements Serializable {
     public double radius;
     public boolean falls;
 
-    public Result(double x, double y, double radius, boolean falls) {
+    public Result(double x, double y, double radius) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.falls = falls;
+        falls = fallsInto(radius);
     }
 
     public double getX() {
@@ -29,5 +29,19 @@ public class Result implements Serializable {
 
     public boolean doesFall() {
         return falls;
+    }
+
+    public boolean fallsInto(double r) {
+        if (x > 0) {
+            if (y >= 0) {
+                return x * x + y * y <= r * r;
+            } else {
+                return 2 * x - y <= r;
+            }
+        } else if (x < 0) {
+            return -r <= x && -r <= y && y <= 0;
+        } else {
+            return -r <= y && y <= r;
+        }
     }
 }
