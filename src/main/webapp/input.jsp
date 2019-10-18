@@ -1,20 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ page import="ru.ifmo.se.asurkis.web.lab2.results.*" %>
 <%@ page import="ru.ifmo.se.asurkis.web.lab2.parameters.*" %>
-<%@ page import="java.util.List" %>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Лабораторная работа № 2</title>
-    <script src="main.js" defer></script>
-    <style><%@ include file="style.css" %></style>
-</head>
-<body>
-
-<%@ include file="svg.jsp" %>
-<%@ include file="header.html" %>
 
 <jsp:useBean id="parameters" class="RequestParameters" scope="request" />
 <% boolean somethingSet = !parameters.getX().isUnset() || !parameters.getY().isUnset() || !parameters.getR().isUnset();
@@ -82,10 +67,3 @@
     </tr>
 </table>
 </form>
-
-<jsp:useBean id="sessionResults" class="ResultsBean" scope="session" />
-<% List<Result> results = sessionResults.getResults(); %>
-<%@ include file="table.jsp" %>
-
-</body>
-</html>

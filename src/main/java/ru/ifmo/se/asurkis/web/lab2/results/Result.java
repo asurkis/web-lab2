@@ -3,10 +3,10 @@ package ru.ifmo.se.asurkis.web.lab2.results;
 import java.io.Serializable;
 
 public class Result implements Serializable {
-    public double x;
-    public double y;
-    public double radius;
-    public boolean falls;
+    private double x;
+    private double y;
+    private double radius;
+    private boolean falls;
 
     public Result(double x, double y, double radius) {
         this.x = x;

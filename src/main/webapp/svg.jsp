@@ -21,8 +21,8 @@
     <text x="290" y="10" text-anchor="end">y</text>
     <text x="595" y="290" text-anchor="end">x</text>
 
-    <jsp:useBean id="requestResults" class="ResultsBean" scope="request" />
-    <% for (Result r: requestResults.getResults()) { %>
+    <jsp:useBean id="sessionResults" class="ResultsBean" scope="session" />
+    <% for (Result r: sessionResults.getResults()) { %>
         <circle cx="<%= 300 + 50 * r.getX() %>" cy="<%= 300 - 50 * r.getY() %>" r="5"
             style="fill: <%= r.doesFall() ? "#0f0" : "#00f" %>"></circle>
     <% } %>

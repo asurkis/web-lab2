@@ -26,12 +26,6 @@ public class ControllerServlet extends HttpServlet {
             request.getSession().setAttribute("sessionResults", sessionResults);
         }
 
-        Object requestResults = request.getAttribute("requestResults");
-        if (!(requestResults instanceof ResultsBean)) {
-            requestResults = new ResultsBean();
-            request.setAttribute("requestResults", requestResults);
-        }
-
         RequestParameters parameters = Utils.parseRequest(request);
         request.setAttribute("parameters", parameters);
 
@@ -45,11 +39,10 @@ public class ControllerServlet extends HttpServlet {
         }
 
         boolean shouldCheck = parameters.getX().isValid() && parameters.getY().isValid() && parameters.getR().isValid();
-        request.setAttribute("removeAllowed", !shouldCheck);
 
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher(
-                shouldCheck ? "/area-check" : "/no-input");
+                shouldCheck ? "/area-check" : "/index.jsp");
         dispatcher.forward(request, response);
     }
 }

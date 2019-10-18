@@ -10,11 +10,6 @@
         <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.AreaCheckServlet</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>No Input Servlet</servlet-name>
-        <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.NoInputServlet</servlet-class>
-    </servlet>
-
     <servlet-mapping>
         <servlet-name>Controller Servlet</servlet-name>
         <url-pattern>/controller</url-pattern>
@@ -23,11 +18,6 @@
     <servlet-mapping>
         <servlet-name>Area Check Servlet</servlet-name>
         <url-pattern>/area-check</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>No Input Servlet</servlet-name>
-        <url-pattern>/no-input</url-pattern>
     </servlet-mapping>
 </web-app>
 

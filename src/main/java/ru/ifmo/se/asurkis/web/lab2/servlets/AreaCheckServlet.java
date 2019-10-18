@@ -1,6 +1,5 @@
 package ru.ifmo.se.asurkis.web.lab2.servlets;
 
-import ru.ifmo.se.asurkis.web.lab2.parameters.MultipleParameter;
 import ru.ifmo.se.asurkis.web.lab2.parameters.RequestParameters;
 import ru.ifmo.se.asurkis.web.lab2.results.Result;
 import ru.ifmo.se.asurkis.web.lab2.results.ResultsBean;
@@ -24,11 +23,9 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         ResultsBean sessionResults = (ResultsBean) request.getSession().getAttribute("sessionResults");
-        ResultsBean requestResults = (ResultsBean) request.getAttribute("requestResults");
 
         RequestParameters parameters = (RequestParameters) parametersObj;
-        List<Result> results = requestResults.getResults();
-        results.clear();
+        List<Result> results = sessionResults.getResults();
 
         Double[] xs = parameters.getX().getValues();
         Double[] ys = parameters.getY().getValues();
@@ -42,10 +39,8 @@ public class AreaCheckServlet extends HttpServlet {
             }
         }
 
-        sessionResults.getResults().addAll(results);
-
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/area-check.jsp");
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
 }
