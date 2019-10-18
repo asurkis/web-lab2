@@ -80,6 +80,7 @@ public class Utils {
         args.setY(validateDoubleParameter("y", request, -3, 5));
         args.setR(validateDoubleParameter("r", request, 1, 5));
         args.setToDelete(validateIntegerParameter("d", request, 0, resultsBean.getResults().size() - 1));
+        args.setPictureOnly(request.getParameter("p") != null);
 
         return args;
     }

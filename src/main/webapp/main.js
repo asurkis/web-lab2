@@ -6,6 +6,28 @@ if (toDeleteAll) {
     toDeleteList.forEach(cb => cb.addEventListener('input', markChecked));
 }
 
+function checkAll() {
+    toDeleteList.forEach(cb => cb.checked = toDeleteAll.checked);
+}
+
+function markChecked() {
+    let allChecked = true;
+    let allUnchecked = true;
+
+    for (const cb of toDeleteList) {
+        allChecked &= cb.checked;
+        allUnchecked &= !cb.checked;
+    }
+
+    if (allChecked) {
+        toDeleteAll.checked = true;
+    }
+
+    if (allUnchecked) {
+        toDeleteAll.checked = false;
+    }
+}
+
 const keyList = ['x', 'y', 'r'];
 const areaCheckSubmit = document.getElementById('area-check-submit');
 const inputs = {};
@@ -51,32 +73,10 @@ function markValid(key, isValid) {
     markers[key].style.visibility = isValid ? 'hidden' : 'visible';
 }
 
-function checkAll() {
-    toDeleteList.forEach(cb => cb.checked = toDeleteAll.checked);
-}
-
-function markChecked() {
-    let allChecked = true;
-    let allUnchecked = true;
-
-    for (const cb of toDeleteList) {
-        allChecked &= cb.checked;
-        allUnchecked &= !cb.checked;
-    }
-
-    if (allChecked) {
-        toDeleteAll.checked = true;
-    }
-
-    if (allUnchecked) {
-        toDeleteAll.checked = false;
-    }
-}
-
 const svgImage = document.querySelector('svg');
 
-svgImage.addEventListener('click', svgClick);
-function svgClick(e) {
+svgImage.addEventListener('click', onSvgClick);
+function onSvgClick(e) {
     if (!validateR()) {
         markValid('r', false);
         return;
@@ -96,7 +96,23 @@ function svgClick(e) {
     window.location.href = request;
 }
 
-const mouseCircle = document.getElementById('mouse-circle');
+inputs.r.forEach(e => e.addEventListener('input', onRadiusInput));
+async function onRadiusInput() {
+    let request = `${window.location.href.match(/^[^?]*/)[0]}?p`;
+    for (const input of inputs.r) {
+        if (input.checked) {
+            request += '&r=' + input.value;
+        }
+    }
+
+    const response = await fetch(request);
+    if (response.ok) {
+        svgImage.innerHTML = await response.text();
+        mouseCircle = document.getElementById('mouse-circle');
+    }
+}
+
+let mouseCircle = document.getElementById('mouse-circle');
 
 svgImage.addEventListener('mousemove', svgHover);
 function svgHover(e) {

@@ -15,7 +15,9 @@ import java.util.List;
 
 public class AreaCheckServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws ServletException, IOException {
         Object parametersObj = request.getAttribute("parameters");
         if (!(parametersObj instanceof RequestParameters)) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);

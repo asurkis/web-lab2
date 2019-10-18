@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="4.0">
+    <request-character-encoding>UTF-8</request-character-encoding>
+    <response-character-encoding>UTF-8</response-character-encoding>
+
     <servlet>
         <servlet-name>Controller Servlet</servlet-name>
         <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.ControllerServlet</servlet-class>
@@ -10,6 +13,11 @@
         <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.AreaCheckServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Picture Servlet</servlet-name>
+        <servlet-class>ru.ifmo.se.asurkis.web.lab2.servlets.PictureServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Controller Servlet</servlet-name>
         <url-pattern>/controller</url-pattern>
@@ -18,6 +26,11 @@
     <servlet-mapping>
         <servlet-name>Area Check Servlet</servlet-name>
         <url-pattern>/area-check</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Picture Servlet</servlet-name>
+        <url-pattern>/picture</url-pattern>
     </servlet-mapping>
 </web-app>
 

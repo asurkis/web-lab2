@@ -7,6 +7,7 @@ public class RequestParameters implements Serializable {
     private MultipleParameter<Double> y;
     private MultipleParameter<Double> r;
     private MultipleParameter<Integer> toDelete;
+    private boolean isPictureOnly;
 
     public MultipleParameter<Double> getX() {
         return x;
@@ -38,5 +39,13 @@ public class RequestParameters implements Serializable {
 
     public void setToDelete(MultipleParameter<Integer> toDelete) {
         this.toDelete = toDelete;
+    }
+
+    public boolean isPictureOnly() {
+        return isPictureOnly;
+    }
+
+    public void setPictureOnly(boolean pictureOnly) {
+        isPictureOnly = pictureOnly;
     }
 }

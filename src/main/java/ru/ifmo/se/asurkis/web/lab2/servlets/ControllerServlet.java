@@ -38,11 +38,17 @@ public class ControllerServlet extends HttpServlet {
             }
         }
 
-        boolean shouldCheck = parameters.getX().isValid() && parameters.getY().isValid() && parameters.getR().isValid();
+        boolean shouldCheck = parameters.getX().isValid()
+                && parameters.getY().isValid()
+                && parameters.getR().isValid();
 
-        ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher(
-                shouldCheck ? "/area-check" : "/index.jsp");
-        dispatcher.forward(request, response);
+        getServletContext()
+                .getRequestDispatcher(
+                        shouldCheck
+                                ? "/area-check"
+                                : parameters.isPictureOnly()
+                                ? "/picture"
+                                : "/index.jsp")
+                .forward(request, response);
     }
 }

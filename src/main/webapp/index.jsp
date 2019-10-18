@@ -17,7 +17,9 @@
 </div>
 <div></div>
 
-<jsp:include page="/svg.jsp" />
+<svg width="600" height="600">
+    <jsp:include page="/picture" />
+</svg>
 <jsp:include page="/input.jsp" />
 <jsp:include page="/table.jsp" />
 
