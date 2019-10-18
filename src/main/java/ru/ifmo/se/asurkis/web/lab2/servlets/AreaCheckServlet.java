@@ -31,14 +31,15 @@ public class AreaCheckServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ResultsBean sessionResults = (ResultsBean) request.getSession().getAttribute("sessionResults");
-        ResultsBean requestResults = (ResultsBean) request.getAttribute("requestResults");
-
         Object parametersObj = request.getAttribute("parameters");
         if (!(parametersObj instanceof RequestParameters)) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
+
+        ResultsBean sessionResults = (ResultsBean) request.getSession().getAttribute("sessionResults");
+        ResultsBean requestResults = (ResultsBean) request.getAttribute("requestResults");
+
         RequestParameters parameters = (RequestParameters) parametersObj;
         List<Result> results = requestResults.getResults();
         results.clear();

@@ -1,5 +1,6 @@
 package ru.ifmo.se.asurkis.web.lab2.servlets;
 
+import ru.ifmo.se.asurkis.web.lab2.parameters.RequestParameters;
 import ru.ifmo.se.asurkis.web.lab2.results.Result;
 import ru.ifmo.se.asurkis.web.lab2.results.ResultsBean;
 
@@ -17,6 +18,12 @@ public class NoInputServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
+        Object parametersObj = request.getAttribute("parameters");
+        if (!(parametersObj instanceof RequestParameters)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+
         ResultsBean sessionResults = (ResultsBean) request.getSession().getAttribute("sessionResults");
         ResultsBean requestResults = (ResultsBean) request.getAttribute("requestResults");
 
