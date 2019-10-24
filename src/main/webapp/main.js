@@ -49,7 +49,7 @@ function validateX() {
 }
 
 function validateY() {
-    return inputs.y[0].value.match(/^(-[0-3]|[0-5])([.,]\d*)?$/).length != 0;
+    return inputs.y[0].value.match(/^(-[0-3]|[0-5])([.,]\d*)?$/) !== null;
 }
 
 function validateR() {
