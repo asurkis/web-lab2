@@ -5,24 +5,43 @@ body {
     font-family: sans-serif;
 }
 
+body > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
 #header-box {
     color: #eba300;
 }
 
-#header-box + * {
-    height: 1em;
+#results-table {
+    text-align: right;
 }
 
-#results-table tbody tr td {
-    text-align: right;
+#results-table tr:hover {
+    background-color: #fff;
+}
+
+#results-table thead, #results-table tbody, #results-table tfoot {
+    display: block;
+}
+
+#results-table tbody {
+    height: 600px;
+    overflow: scroll;
+}
+
+#results-table tbody td:first-child ~ td, #results-table thead th:first-child ~ th {
+    width: 150px;
+}
+
+.invalid-input {
+    color: #f00;
+    visibility: hidden;
 }
 
 line {
     stroke: black;
-}
-
-polygon {
-    fill: black;
 }
 
 circle {
@@ -47,9 +66,4 @@ circle {
 
 #r5-path {
     fill: #6cf;
-}
-
-.invalid-input {
-    color: #f00;
-    visibility: hidden;
 }

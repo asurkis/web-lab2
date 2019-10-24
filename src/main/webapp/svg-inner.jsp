@@ -1,22 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ page import="ru.ifmo.se.asurkis.web.lab2.results.*" %>
 <%@ page import="ru.ifmo.se.asurkis.web.lab2.parameters.*" %>
-
-<%! private static int[] colorByMatches(int matches, double[] radiuses) {
-        if (radiuses != null && radiuses.length != 0) {
-            return new int[] {
-                255 - 255 * matches / radiuses.length,
-                255 * matches / radiuses.length,
-                0
-            };
-        } else {
-            return new int[] { 128, 128, 128 };
-        }
-    } %>
-<%! private static String styleByMatches(int matches, double[] radiuses) {
-        int[] color = colorByMatches(matches, radiuses);
-        return String.format("fill: #%02x%02x%02x; stroke: #000", color[0], color[1], color[2]);
-    } %>
+<%@ page import="ru.ifmo.se.asurkis.web.lab2.Utils" %>
 
 <% Object radiusesObj = request.getAttribute("radiuses");
    double[] radiuses = null;
@@ -51,18 +36,17 @@
            matches += res.fallsInto(r) ? 1 : 0;
        }} %>
     <circle cx="<%= 300 + 50 * res.getX() %>" cy="<%= 300 - 50 * res.getY() %>" r="5"
-        style="<%= styleByMatches(matches, radiuses) %>"></circle>
+        style="<%= Utils.styleByMatches(matches, radiuses) %>"></circle>
 <% } %>
 
 <circle id="mouse-circle" cx="-100" cy="-100" r="5" style="fill: #eba300;"></circle>
 
 <% if (radiuses != null) {
-   for (int i = 0; i <= radiuses.length; i++) {
-       int[] color = colorByMatches(i, radiuses); %>
+   for (int i = 0; i <= radiuses.length; i++) { %>
 <circle cx="12" cy="<%= 24 * i + 12 %>" r="5"
-    style="<%= styleByMatches(i, radiuses) %>"></circle>
+    style="<%= Utils.styleByMatches(i, radiuses) %>"></circle>
 <text x="24" y="<%= 24 * i + 18 %>"> Попадает в <%= i %> радиус(ов) </text>
 <% }} else { %>
-<circle cx="12" cy="12" r="5" style="<%= styleByMatches(0, null) %>"></circle>
+<circle cx="12" cy="12" r="5" style="<%= Utils.styleByMatches(0, null) %>"></circle>
 <text x="24" y="18"> Радиусы не заданы </text>
 <% } %>

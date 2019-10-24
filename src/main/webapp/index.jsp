@@ -10,18 +10,18 @@
 </head>
 <body>
 
-<div id="header-box">
-    <div> Студент: Суркис Антон Игоревич </div>
-    <div> Группа: P3213 </div>
-    <div> Вариант: 213019 </div>
-</div>
-<div></div>
-
-<svg width="600" height="600">
+<div> <svg width="600" height="600">
     <jsp:include page="/picture" />
-</svg>
-<jsp:include page="/input.jsp" />
-<jsp:include page="/table.jsp" />
+</svg> </div>
+<div>
+    <div id="header-box">
+        <div> Студент: Суркис Антон Игоревич </div>
+        <div> Группа: P3213 </div>
+        <div> Вариант: 213019 </div>
+    </div>
+    <jsp:include page="/input.jsp" />
+</div>
+<div> <jsp:include page="/table.jsp" /> </div>
 
 </body>
 </html>

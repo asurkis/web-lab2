@@ -1,12 +1,10 @@
 package ru.ifmo.se.asurkis.web.lab2.servlets;
 
-import ru.ifmo.se.asurkis.web.lab2.parameters.Utils;
+import ru.ifmo.se.asurkis.web.lab2.Utils;
 import ru.ifmo.se.asurkis.web.lab2.parameters.RequestParameters;
 import ru.ifmo.se.asurkis.web.lab2.results.Result;
 import ru.ifmo.se.asurkis.web.lab2.results.ResultsBean;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

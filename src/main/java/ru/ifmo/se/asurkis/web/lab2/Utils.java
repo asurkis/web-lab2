@@ -1,6 +1,8 @@
-package ru.ifmo.se.asurkis.web.lab2.parameters;
+package ru.ifmo.se.asurkis.web.lab2;
 
+import ru.ifmo.se.asurkis.web.lab2.parameters.MultipleParameter;
 import ru.ifmo.se.asurkis.web.lab2.parameters.MultipleParameter.State;
+import ru.ifmo.se.asurkis.web.lab2.parameters.RequestParameters;
 import ru.ifmo.se.asurkis.web.lab2.results.ResultsBean;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,5 +85,26 @@ public class Utils {
         args.setPictureOnly(request.getParameter("p") != null);
 
         return args;
+    }
+
+    public static int[] colorByMatches(int matches, double[] radiuses) {
+        if (radiuses != null && radiuses.length != 0) {
+            double a = (double) matches / radiuses.length;
+            double r = 255 * Math.sqrt(1 - a);
+            double g = 255 * Math.sqrt(a);
+            double b = 0;
+            return new int[] {
+                    (int) r,
+                    (int) g,
+                    (int) b,
+            };
+        } else {
+            return new int[] { 128, 128, 128 };
+        }
+    }
+
+    public static String styleByMatches(int matches, double[] radiuses) {
+        int[] color = colorByMatches(matches, radiuses);
+        return String.format("fill: #%02x%02x%02x; stroke: #000", color[0], color[1], color[2]);
     }
 }

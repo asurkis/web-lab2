@@ -1,6 +1,5 @@
 package ru.ifmo.se.asurkis.web.lab2.servlets;
 
-import ru.ifmo.se.asurkis.web.lab2.parameters.MultipleParameter;
 import ru.ifmo.se.asurkis.web.lab2.parameters.RequestParameters;
 
 import javax.servlet.ServletException;
